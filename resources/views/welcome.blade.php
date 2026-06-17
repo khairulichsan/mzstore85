@@ -46,7 +46,7 @@
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="space-y-1 text-center sm:text-left">
                 <p class="font-extrabold text-slate-700 tracking-wider uppercase">SISTEM PENJUALAN C2C TOKO MZ STORE 85 PONTIANAK</p>
-                <p class="text-[11px] font-medium text-slate-400">Coded for Willy Ananda Fauzan — Skripsi Sarjana Komputer STMIK Pontianak.</p>
+                <p class="text-[11px] font-medium text-slate-400">Coded for Sevira Isra Aulia — Skripsi Sarjana Komputer STMIK Pontianak.</p>
             </div>
             <span class="text-[10px] bg-slate-100 border border-slate-200 text-slate-600 font-mono font-bold px-2 py-0.5 rounded tracking-wide">
                 GUEST_VIEW_MODE

@@ -93,7 +93,7 @@
                 <div class="bg-slate-900 border border-slate-800 p-5 rounded-3xl text-white relative overflow-hidden shadow-md">
                     <span class="text-white font-black block text-xs tracking-wider uppercase">UMKM MZ STORE 85 Pontianak.</span>
                     <p class="text-[11px] text-slate-300 mt-2.5 leading-relaxed font-medium">
-                        Menawarkan produk daster 100% Original dari pemasok utama batik Kencana Ungu dan Gajah Putih.
+                        Menawarkan produk Gadget 100% Original.
                     </p>
                     <div class="absolute right-3 bottom-0 text-amber-500/10 font-black text-4xl select-none uppercase tracking-tighter">MZ STORE 85</div>
                 </div>
