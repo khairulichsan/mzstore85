@@ -40,7 +40,7 @@
                         @if($isSupplier) Registrasi Supplier Partner. @else Registrasi Konsumen. @endif
                     </h2>
                     <p class="text-slate-500 text-[11px] font-medium leading-relaxed">
-                        @if($isSupplier) Daftarkan brand garmen pakaian Anda. @else Buat akun pelanggan untuk berbelanja pakaian. @endif
+                        @if($isSupplier) Daftarkan brand gadget Anda. @else Buat akun pelanggan untuk berbelanja gadget. @endif
                     </p>
                 </div>
 

@@ -314,7 +314,7 @@
 
                             <div class="border-t border-dashed border-slate-300 pt-4 space-y-1.5 text-xs font-medium">
                                 <div class="flex justify-between text-slate-500">
-                                    <span>Subtotal Pakaian</span>
+                                    <span>Subtotal Gadget</span>
                                     <span class="font-mono">Rp {{ number_format($totalSubtotal, 0, ',', '.') }}</span>
                                 </div>
                                 <div class="flex justify-between text-slate-500">
@@ -339,7 +339,7 @@
                             <div>
                                 <h3 class="font-black text-slate-950 text-base uppercase tracking-tight">Satu Langkah Lagi!</h3>
                                 <p class="text-slate-400 text-[11px] font-medium mt-1 leading-relaxed">
-                                    Silakan masuk atau mendaftarkan akun terlebih dahulu untuk melanjutkan kelayakan transaksi kargo pakaian Anda.
+                                    Silakan masuk atau mendaftarkan akun terlebih dahulu untuk melanjutkan kelayakan transaksi kargo gadget Anda.
                                 </p>
                             </div>
 

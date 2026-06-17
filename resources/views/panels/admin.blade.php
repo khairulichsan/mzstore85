@@ -86,7 +86,7 @@
                 <div class="bg-amber-50 border border-amber-200 rounded-3xl p-5 flex items-center justify-between gap-4">
                     <div class="text-amber-900 text-xs font-bold">
                         <strong class="font-extrabold uppercase text-[11px] block text-amber-700">⚠️ Pemberitahuan Sistem:</strong>
-                        Terdapat {{ $lowStockItems }} varian pakaian daster/batik dengan stok kritis di bawah 10 pcs. Gunakan fitur pengadaan stok cepat.
+                        Terdapat {{ $lowStockItems }} varian Gadget dan aksesoris dengan stok kritis di bawah 10 pcs. Gunakan fitur pengadaan stok cepat.
                     </div>
                     <a href="?tab=stock" class="bg-amber-500 hover:bg-slate-900 text-white font-black text-[11px] px-4 py-2.5 rounded-xl transition-all uppercase tracking-wider shrink-0">
                         Proses PO Restock
@@ -171,7 +171,7 @@
         <div class="space-y-4">
             <div>
                 <h2 class="text-base font-black text-slate-950 uppercase tracking-tight">Kemas &amp; Kirim Pesanan</h2>
-                <p class="text-slate-400 text-xs mt-0.5 font-semibold">Setelah pesanan disetujui bayar, siapkan bungkus pakaian daster/batik dan pasang resi pelayanan ekspedisi.</p>
+                <p class="text-slate-400 text-xs mt-0.5 font-semibold">Setelah pesanan disetujui bayar, siapkan paket gadget dan pasang resi pelayanan ekspedisi.</p>
             </div>
 
             @php $processingOrders = $orders->where('shipping_status', 'processing'); @endphp
@@ -274,14 +274,14 @@
         <div class="space-y-6">
             <div>
                 <h2 class="text-base font-bold text-gray-900 tracking-tight">Audit Stok &amp; Purchase Order (PO) Pengadaan</h2>
-                <p class="text-gray-400 text-xs mt-0.5">Pantau jumlah inventaris baju daster/batik secara integral. Kirim pesanan restock langsung ke lapak Supplier.</p>
+                <p class="text-gray-400 text-xs mt-0.5">Pantau jumlah inventaris gadget dan aksesoris secara integral. Kirim pesanan restock langsung ke lapak Supplier.</p>
             </div>
 
             <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xs">
                 <table class="w-full text-left border-collapse">
                     <thead>
                         <tr class="bg-slate-50 border-b border-slate-200 text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                            <th class="p-4">Pakaian</th>
+                            <th class="p-4">Gadget</th>
                             <th class="p-4">SKU</th>
                             <th class="p-4">Supplier Partner</th>
                             <th class="p-4">Stok Saat Ini</th>
@@ -387,7 +387,7 @@
                 <table class="w-full text-left border-collapse text-xs">
                     <thead>
                         <tr class="border-b border-slate-300 text-[10px] font-black text-slate-400 uppercase tracking-widest bg-slate-50 p-4">
-                            <th class="p-6">Pakaian &amp; Asal Supplier</th>
+                            <th class="p-6">Gadget &amp; Asal Supplier</th>
                             <th class="p-6">Harga Grosir Asal</th>
                             <th class="p-6">Harga Ecer Jual Toko</th>
                             <th class="p-6">Status Publikasi</th>
@@ -658,7 +658,7 @@
                     <div class="space-y-2 text-xs max-w-md ml-auto pt-4 bg-gray-50 p-4 rounded-xl border border-gray-200">
                         <span class="block font-bold text-gray-700 border-b border-gray-200 pb-1 uppercase tracking-wide">RINGKASAN REKAPITULASI KEUANGAN</span>
                         <div class="flex justify-between text-gray-600">
-                            <span>Total Omset Kotor (Pakaian):</span>
+                            <span>Total Omset Kotor (Gadget):</span>
                             <strong class="text-slate-900 font-mono">Rp {{ number_format($reportSums['gross'], 0, ',', '.') }}</strong>
                         </div>
                         <div class="flex justify-between text-gray-600">

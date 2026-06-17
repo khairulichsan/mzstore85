@@ -39,7 +39,7 @@ Route::post('/cart/add', function (Illuminate\Http\Request $request) {
 
     // Jika sudah login arahkan ke dashboard, jika tamu arahkan ke welcome page
     $targetUrl = Auth::check() ? '/dashboard?ctab=cart' : '/?ctab=cart';
-    return redirect()->to($targetUrl)->with('success', 'Pakaian berhasil masuk keranjang!');
+    return redirect()->to($targetUrl)->with('success', 'Product berhasil masuk keranjang!');
 })->name('cart.add');
 
 Route::get('/cart/remove/{id}', function ($id) {
