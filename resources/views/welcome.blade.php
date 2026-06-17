@@ -3,7 +3,7 @@
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
 
             <div class="flex items-center gap-3">
-                <header id="mz-store-header" class="bg-white border-b border-slate-200 py-5 px-6 shadow-sm">
+
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div class="flex items-center gap-3">
                 <a href="/" class="flex items-center gap-2">
