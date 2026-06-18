@@ -350,7 +350,7 @@
                 @csrf
                 <div class="flex-1 space-y-1">
                     <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Nama Kategori Baru</label>
-                    <input type="text" name="name" required placeholder="Contoh: Kemeja Pria, Gamis, dll" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-xs font-bold focus:ring-2 focus:ring-amber-600">
+                    <input type="text" name="name" required placeholder="Contoh: Android, Iphone, dll" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-xs font-bold focus:ring-2 focus:ring-amber-600">
                 </div>
                 <button type="submit" class="bg-slate-900 text-white font-black px-6 py-3 rounded-xl text-xs uppercase tracking-widest hover:bg-amber-500 transition-all">Tambah</button>
             </form>
