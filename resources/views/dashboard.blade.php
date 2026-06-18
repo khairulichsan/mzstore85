@@ -4,7 +4,7 @@
             <div class="flex items-center gap-3">
                 <a href="/" class="flex items-center gap-2">
     <img src="{{ asset('images/logo-mz.png') }}" alt="MZ Store 85" class="h-12 w-auto object-contain drop-shadow-md transition-transform hover:scale-105">
-    
+
     </a>
                 <div>
                     <div class="flex items-center gap-2.5">
@@ -14,14 +14,14 @@
                         <span class="bg-amber-50 text-amber-600 border border-amber-100 font-black text-[9px] px-2 py-0.5 rounded uppercase tracking-widest">C2C Marketplace</span>
                     </div>
                     <p class="text-[11px] text-gray-400 flex items-center gap-1 mt-0.5">
-                        📍 Pasar Sudirman, Jl. Nusa Indah 1 No. 2, Darat Sekip, Pontianak Kota
+                        📍 Jalan Putri Candramidi (Podomoro) No.15, Kota Pontianak
                     </p>
                 </div>
             </div>
 
             <div class="flex items-center gap-6 text-xs text-slate-500">
                 <div class="flex items-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5">
-                    <span>🕒 <strong>Operasional:</strong> Senin-Sabtu 09:00-17:00 | Minggu 08:30-16:30 WIB</span>
+                    <span>🕒 <strong>Operasional:</strong> Mulai 09:00-22:00 WIB</span>
                 </div>
 
                 <div class="flex items-center gap-3 pl-2 border-l border-slate-200">

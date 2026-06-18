@@ -181,7 +181,7 @@
                                 </div>
 
                                 <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl flex flex-col">
-                                    <span class="text-[9px] text-slate-400 uppercase font-black tracking-widest">Harga Eceran Resmi Pasar Sudirman:</span>
+                                    <span class="text-[9px] text-slate-400 uppercase font-black tracking-widest">Harga Eceran Resmi:</span>
                                     <span class="text-2xl font-mono font-black text-slate-950 mt-1">Rp {{ number_format($selectedProduct->price, 0, ',', '.') }} <span class="text-xs font-sans text-slate-400 font-bold">/ pcs</span></span>
                                 </div>
 
@@ -227,7 +227,7 @@
                             </div>
 
                             <div class="text-[10px] text-slate-400 font-semibold text-center border-t border-slate-100 pt-3">
-                                ✓ Transaksi aman terproteksi Kas Toko MZ STORE 85 Pasar Sudirman.
+                                ✓ Transaksi aman terproteksi Kas Toko MZ STORE 85.
                             </div>
                         </div>
 

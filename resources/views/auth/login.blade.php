@@ -10,14 +10,14 @@
                     </div>
                     <p class="text-[11px] text-gray-400 flex items-center gap-1 mt-0.5 font-medium">
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 14 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                        Pasar Sudirman, Jl. Nusa Indah 1 No. 2, Darat Sekip, Pontianak Kota
+                        Jalan Putri Candramidi (Podomoro) No.15, Kota Pontianak
                     </p>
                 </div>
             </div>
             <div class="flex items-center gap-6 text-xs text-slate-500">
                 <div class="flex items-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 font-medium">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-amber-600"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    <span><strong>Operasional:</strong> Senin-Sabtu 09:00-17:00 | Minggu 08:30-16:30 WIB</span>
+                    <span><strong>Operasional:</strong> Mulai 09:00-22:00 WIB</span>
                 </div>
             </div>
         </div>
