@@ -86,7 +86,7 @@
                 <div class="bg-amber-50 border border-amber-200 rounded-3xl p-5 flex items-center justify-between gap-4">
                     <div class="text-amber-900 text-xs font-bold">
                         <strong class="font-extrabold uppercase text-[11px] block text-amber-700">⚠️ Pemberitahuan Sistem:</strong>
-                        Terdapat {{ $lowStockItems }} varian Gadget dan aksesoris dengan stok kritis di bawah 10 pcs. Gunakan fitur pengadaan stok cepat.
+                        Terdapat {{ $lowStockItems }} varian Gadget dengan stok kritis di bawah 10 pcs. Gunakan fitur pengadaan stok cepat.
                     </div>
                     <a href="?tab=stock" class="bg-amber-500 hover:bg-slate-900 text-white font-black text-[11px] px-4 py-2.5 rounded-xl transition-all uppercase tracking-wider shrink-0">
                         Proses PO Restock
@@ -274,7 +274,7 @@
         <div class="space-y-6">
             <div>
                 <h2 class="text-base font-bold text-gray-900 tracking-tight">Audit Stok &amp; Purchase Order (PO) Pengadaan</h2>
-                <p class="text-gray-400 text-xs mt-0.5">Pantau jumlah inventaris gadget dan aksesoris secara integral. Kirim pesanan restock langsung ke lapak Supplier.</p>
+                <p class="text-gray-400 text-xs mt-0.5">Pantau jumlah inventaris gadget secara integral. Kirim pesanan restock langsung ke lapak Supplier.</p>
             </div>
 
             <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xs">
