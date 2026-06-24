@@ -27,15 +27,25 @@
                 <div class="flex items-center gap-3 pl-2 border-l border-slate-200">
                     <span class="text-slate-600">
                         Log sebagai: <strong class="text-slate-900 font-bold">{{ auth()->user()->name }}</strong>
-                        <span class="text-[10px] uppercase bg-slate-200 px-1.5 py-0.5 rounded font-bold">({{ auth()->user()->role }})</span>
+                        <span class="text-[10px] uppercase bg-slate-200 px-1.5 py-0.5 rounded font-bold">({{ auth()->user()->role === 'customer' ? 'consumer' : auth()->user()->role }})</span>
                     </span>
 
-                    <form method="POST" action="{{ route('logout') }}" class="inline">
-                        @csrf
-                        <button type="submit" class="font-bold text-red-500 hover:text-red-700 transition-colors">
-                            Keluar
-                        </button>
-                    </form>
+                    <div class="flex items-center gap-3 pl-2 border-l border-slate-200">
+
+
+    <a href="{{ route('profile.edit') }}" class="font-bold text-slate-500 hover:text-amber-600 transition-colors ml-2">
+        ⚙️ Profil
+    </a>
+
+    <span class="text-slate-300">|</span>
+
+    <form method="POST" action="{{ route('logout') }}" class="inline">
+        @csrf
+        <button type="submit" class="font-bold text-red-500 hover:text-red-700 transition-colors">
+            Keluar
+        </button>
+    </form>
+</div>
                 </div>
             </div>
         </div>

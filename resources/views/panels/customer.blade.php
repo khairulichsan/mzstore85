@@ -193,37 +193,69 @@
                                 </div>
 
                                 <form action="{{ route('cart.add') }}" method="POST" class="space-y-4 pt-2">
-                                    @csrf
-                                    <input type="hidden" name="product_id" value="{{ $selectedProduct->id }}">
+    @csrf
+    <input type="hidden" name="product_id" value="{{ $selectedProduct->id }}">
 
-                                    <div class="space-y-2">
-                                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Pilih Varian Kombo (Ukuran - Warna):</label>
-                                        <div class="grid grid-cols-1 gap-2 max-h-[140px] overflow-y-auto pr-1">
-                                            @foreach($selectedProduct->variants as $index => $v)
-                                                <label class="border border-slate-200 rounded-xl p-3 flex items-center justify-between cursor-pointer hover:bg-slate-50 transition-colors bg-white">
-                                                    <div class="flex items-center gap-2.5">
-                                                        <input type="radio" name="variant_id" value="{{ $v->id }}" {{ $index === 0 ? 'checked' : '' }} class="text-amber-600 focus:ring-0">
-                                                        <span class="text-xs font-black text-slate-900 uppercase tracking-wide">{{ $v->name }}</span>
-                                                    </div>
-                                                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Tersedia: {{ $v->stock }} pcs</span>
-                                                </label>
-                                            @endforeach
-                                        </div>
-                                    </div>
+    @php
+        $totalStock = $selectedProduct->variants->sum('stock');
+        $firstAvailableVariant = $selectedProduct->variants->where('stock', '>', 0)->first();
+    @endphp
 
-                                    <div class="grid grid-cols-3 gap-3 items-end pt-2 border-t border-slate-100">
-                                        <div class="col-span-1 space-y-1">
-                                            <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Jumlah Beli</label>
-                                            <input type="number" name="qty" value="1" min="1" max="10" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 text-center font-mono font-black text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-600">
-                                        </div>
-                                        <div class="col-span-2">
-                                            <button type="submit" class="w-full bg-slate-900 hover:bg-amber-500 text-white font-black py-4 rounded-xl text-xs uppercase tracking-widest transition-all cursor-pointer shadow-md flex items-center justify-center gap-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-                                                Masukkan Keranjang Jual
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
+    <div class="space-y-2">
+        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Pilih Varian Kombo (Ukuran - Warna):</label>
+        <div class="grid grid-cols-1 gap-2 max-h-[140px] overflow-y-auto pr-1">
+            @foreach($selectedProduct->variants as $index => $v)
+                @php $isOutOfStock = $v->stock <= 0; @endphp
+
+                <label class="border {{ $isOutOfStock ? 'border-rose-200 bg-rose-50/50 cursor-not-allowed opacity-75' : 'border-slate-200 bg-white hover:bg-slate-50 cursor-pointer' }} rounded-xl p-3 flex items-center justify-between transition-colors">
+                    <div class="flex items-center gap-2.5">
+                        <input type="radio" name="variant_id" value="{{ $v->id }}"
+                               {{ ($firstAvailableVariant && $firstAvailableVariant->id === $v->id) || ($index === 0 && !$firstAvailableVariant) ? 'checked' : '' }}
+                               {{ $isOutOfStock ? 'disabled' : '' }}
+                               class="text-amber-600 focus:ring-0 {{ $isOutOfStock ? 'cursor-not-allowed' : '' }}">
+                        <span class="text-xs font-black {{ $isOutOfStock ? 'text-rose-800 line-through' : 'text-slate-900' }} uppercase tracking-wide">
+                            {{ $v->name }}
+                        </span>
+                    </div>
+
+                    @if($isOutOfStock)
+                        <span class="text-[10px] font-bold text-rose-700 bg-rose-100 px-2 py-0.5 rounded border border-rose-200">
+                            Habis
+                        </span>
+                    @else
+                        <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
+                            Tersedia: {{ $v->stock }} pcs
+                        </span>
+                    @endif
+                </label>
+            @endforeach
+        </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-3 items-end pt-2 border-t border-slate-100">
+        <div class="col-span-1 space-y-1">
+            <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Jumlah Beli</label>
+            <input type="number" name="qty" value="{{ $totalStock > 0 ? 1 : 0 }}" min="1" max="{{ $totalStock > 0 ? 10 : 0 }}"
+                   {{ $totalStock <= 0 ? 'disabled' : '' }}
+                   class="w-full {{ $totalStock <= 0 ? 'bg-slate-100 text-slate-400 cursor-not-allowed' : 'bg-slate-50 text-slate-900' }} border border-slate-200 rounded-xl py-3 text-center font-mono font-black text-xs focus:outline-none focus:ring-2 focus:ring-amber-600">
+        </div>
+        <div class="col-span-2">
+            <button type="submit"
+                    {{ $totalStock <= 0 ? 'disabled' : '' }}
+                    class="w-full {{ $totalStock <= 0 ? 'bg-slate-300 text-slate-500 cursor-not-allowed shadow-none' : 'bg-slate-900 hover:bg-amber-500 text-white shadow-md' }} font-black py-4 rounded-xl text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2">
+
+                @if($totalStock > 0)
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                    Masukkan Keranjang
+                @else
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+                    Stok Habis
+                @endif
+
+            </button>
+        </div>
+    </div>
+</form>
                             </div>
 
                             <div class="text-[10px] text-slate-400 font-semibold text-center border-t border-slate-100 pt-3">
@@ -302,7 +334,7 @@
 
                             <div class="space-y-1.5">
                                 <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Alamat Lengkap Pengiriman</label>
-                                <textarea name="shipping_address" required rows="2" placeholder="Masukkan alamat jalan, kelurahan, kecamatan, dan kota" class="w-full bg-white border border-slate-400 rounded-xl p-2.5 text-xs font-semibold focus:outline-none"></textarea>
+                                <textarea name="shipping_address" required rows="2" placeholder="Masukkan alamat jalan, kelurahan, kecamatan, dan kota" class="w-full bg-white border border-slate-400 rounded-xl p-2.5 text-xs font-semibold focus:outline-none">{{ auth()->check() ? auth()->user()->address : '' }}</textarea>
                             </div>
 
                             <div class="space-y-1.5">

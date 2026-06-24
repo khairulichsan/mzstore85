@@ -60,5 +60,17 @@
                 >{{ __('Saved.') }}</p>
             @endif
         </div>
+
+        <div>
+            <x-input-label for="contact" value="Nomor Telepon/WA" />
+            <x-text-input id="contact" name="contact" type="text" class="mt-1 block w-full" :value="old('contact', $user->contact)" required autocomplete="tel" />
+            <x-input-error class="mt-2" :messages="$errors->get('contact')" />
+        </div>
+
+        <div>
+            <x-input-label for="address" value="Alamat Lengkap Pengiriman" />
+            <textarea id="address" name="address" rows="3" class="border-gray-300 focus:border-amber-500 focus:ring-amber-500 rounded-md shadow-sm mt-1 block w-full" required>{{ old('address', $user->address) }}</textarea>
+            <x-input-error class="mt-2" :messages="$errors->get('address')" />
+        </div>
     </form>
 </section>

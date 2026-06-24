@@ -22,6 +22,28 @@ class CheckoutController extends Controller
             'shipping_courier' => 'required|string',
         ]);
 
+        if (Auth::check()) {
+            $user = Auth::user();
+            $isProfileUpdated = false;
+
+            // Update alamat jika berubah
+            if ($user->address !== $request->shipping_address) {
+                $user->address = $request->shipping_address;
+                $isProfileUpdated = true;
+            }
+
+            // Update kontak/telepon jika berubah
+            if ($user->contact !== $request->customer_phone) {
+                $user->contact = $request->customer_phone;
+                $isProfileUpdated = true;
+            }
+
+            // Simpan ke database hanya jika ada perubahan
+            if ($isProfileUpdated) {
+                $user->save();
+            }
+        }
+
         // 2. Tarik data keranjang yang aman dari Session server
         $cart = session('cart', []);
         if (empty($cart)) {
