@@ -67,21 +67,34 @@
                     </form>
                 </div>
 
-                <div class="space-y-2">
-                    <span class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Kategori Produk</span>
-                    <div class="flex flex-wrap lg:flex-col gap-1.5">
-                        <a href="?ctab=catalog&category=all&search={{ $search }}" class="px-3.5 py-2.5 rounded-2xl text-left text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-between border {{ $categoryFilter === 'all' ? 'bg-amber-500 text-white font-black border-amber-600 shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 border-transparent' }}">
-                            <span>Semua Kategori</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded-md font-black {{ $categoryFilter === 'all' ? 'bg-amber-700 text-white' : 'bg-slate-200 text-slate-800' }}">{{ $products->where('is_published', true)->count() }}</span>
-                        </a>
-                        @foreach($categories as $cat)
-                            <a href="?ctab=catalog&category={{ $cat->id }}&search={{ $search }}" class="px-3.5 py-2.5 rounded-2xl text-left text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-between border {{ $categoryFilter == $cat->id ? 'bg-amber-500 text-white font-black border-amber-600 shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 border-transparent' }}">
-                                <span>{{ strtoupper($cat->name) }}</span>
-                                <span class="text-[10px] px-2 py-0.5 rounded-md font-black {{ $categoryFilter == $cat->id ? 'bg-amber-700 text-white' : 'bg-slate-200 text-slate-800' }}">{{ $products->where('is_published', true)->where('category_id', $cat->id)->count() }}</span>
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
+                <div class="space-y-2" x-data="{ open: {{ $categoryFilter === 'all' ? 'false' : 'true' }} }">
+    <span class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Kategori Produk</span>
+
+    <div class="flex flex-col gap-2">
+        <!-- 1. TOMBOL SEMUA KATEGORI (Selalu Paling Atas) -->
+        <a href="?ctab=catalog&category=all&search={{ $search }}"
+           @click.prevent="if('{{ $categoryFilter }}' === 'all') { open = !open } else { window.location.href = $el.href }"
+           class="w-full px-4 py-3 rounded-2xl text-left text-xs font-extrabold uppercase tracking-wider transition-all flex items-center justify-between cursor-pointer {{ $categoryFilter === 'all' ? 'border-2 border-amber-600 bg-amber-500 text-white shadow-sm' : 'border border-transparent bg-slate-50 text-slate-700 hover:bg-slate-100' }}">
+            <span>SEMUA KATEGORI</span>
+            <span class="text-[10px] px-2.5 py-1 rounded-lg font-black {{ $categoryFilter === 'all' ? 'bg-amber-700 text-white shadow-inner' : 'bg-slate-200 text-slate-800' }}">
+                {{ $products->where('is_published', true)->count() }}
+            </span>
+        </a>
+
+        <!-- 2. DAFTAR KATEGORI LAINNYA (Muncul/Sembunyi) -->
+        <div x-show="open" x-transition.opacity.duration.300ms style="display: none;" class="flex flex-col gap-2">
+            @foreach($categories as $cat)
+                <a href="?ctab=catalog&category={{ $cat->id }}&search={{ $search }}"
+                   class="w-full px-4 py-3 rounded-2xl text-left text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-between {{ $categoryFilter == $cat->id ? 'border-2 border-amber-600 bg-amber-500 text-white shadow-sm' : 'border border-transparent bg-slate-50 text-slate-700 hover:bg-slate-100' }}">
+                    <span>{{ strtoupper($cat->name) }}</span>
+                    <span class="text-[10px] px-2.5 py-1 rounded-lg font-black {{ $categoryFilter == $cat->id ? 'bg-amber-700 text-white shadow-inner' : 'bg-slate-200 text-slate-800' }}">
+                        {{ $products->where('is_published', true)->where('category_id', $cat->id)->count() }}
+                    </span>
+                </a>
+            @endforeach
+        </div>
+    </div>
+</div>
 
                 <div class="space-y-2">
                     <span class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Urutkan Harga</span>
